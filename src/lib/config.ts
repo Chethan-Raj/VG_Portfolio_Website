@@ -28,7 +28,8 @@ export const siteConfig = {
 // and update `src` to just the filename (e.g. "hero.jpg").
 export const heroConfig = {
   type: 'image' as 'image' | 'video',
-  src: '/assets/images/logo.jpg',          // ← swap filename here
+  // src: '/assets/images/logo.jpg',          // ← swap filename here
+  src: '',
   videoSrc: '/assets/videos/hero.mp4',     // ← used when type === "video"
   poster: '/assets/images/hero.jpg',       // ← video poster frame
 }

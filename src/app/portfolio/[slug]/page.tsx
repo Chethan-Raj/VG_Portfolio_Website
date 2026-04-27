@@ -4,6 +4,7 @@ import { ArrowLeft, CheckCircle2 } from 'lucide-react'
 import { portfolioItems } from '@/lib/config'
 import GalleryLightbox from '@/components/GalleryLightbox'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 
 interface Props {
   params: { slug: string }
@@ -41,18 +42,28 @@ export default function PortfolioDetailPage({ params }: Props) {
           }}
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        {/* <img
           src={item.heroImage}
           alt={item.title}
           className="absolute inset-0 w-full h-full object-cover"
-        />
+        /> */
+          <Image
+            src={item.heroImage}
+            alt={item.title}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+
+        }
         <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-espresso/40 to-espresso/20" />
 
         {/* Arch overlay on detail page */}
         <div className="absolute inset-0 pointer-events-none">
           <svg className="w-full h-full" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" fill="none">
-            <path d="M0,500 L0,100 Q70,60 70,20 L140,20 L140,500" fill="rgba(201,168,76,0.05)" stroke="rgba(201,168,76,0.15)" strokeWidth="1"/>
-            <path d="M1440,500 L1440,100 Q1370,60 1370,20 L1300,20 L1300,500" fill="rgba(201,168,76,0.05)" stroke="rgba(201,168,76,0.15)" strokeWidth="1"/>
+            <path d="M0,500 L0,100 Q70,60 70,20 L140,20 L140,500" fill="rgba(201,168,76,0.05)" stroke="rgba(201,168,76,0.15)" strokeWidth="1" />
+            <path d="M1440,500 L1440,100 Q1370,60 1370,20 L1300,20 L1300,500" fill="rgba(201,168,76,0.05)" stroke="rgba(201,168,76,0.15)" strokeWidth="1" />
           </svg>
         </div>
 

@@ -1,13 +1,16 @@
+import dynamic from 'next/dynamic'
 import HeroSection from '@/components/HeroSection'
-import BusinessPortfolio from '@/components/BusinessPortfolio'
-import AboutSection from '@/components/AboutSection'
-import LocationSection from '@/components/LocationSection'
-import WorkTogetherSection from '@/components/WorkTogetherSection'
+
+// Below-fold components — lazy loaded
+const BusinessPortfolio   = dynamic(() => import('@/components/BusinessPortfolio'),   { ssr: false })
+const AboutSection        = dynamic(() => import('@/components/AboutSection'),        { ssr: false })
+const LocationSection     = dynamic(() => import('@/components/LocationSection'),     { ssr: false })
+const WorkTogetherSection = dynamic(() => import('@/components/WorkTogetherSection'), { ssr: false })
 
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
+      <HeroSection />          {/* above fold — stays static */}
       <BusinessPortfolio />
       <AboutSection />
       <LocationSection />

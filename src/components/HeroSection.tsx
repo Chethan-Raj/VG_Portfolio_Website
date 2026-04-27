@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { heroConfig, siteConfig } from '@/lib/config'
+import Image from 'next/image'
 
 // Decorative Indian arch / jaali SVG overlay
 function ArchOverlay() {
@@ -54,18 +55,18 @@ function ArchOverlay() {
       />
       <circle cx="720" cy="15" r="4" fill="rgba(201,168,76,0.5)" />
       {/* Jaali dots — left pillar */}
-      {[200,260,320,380,440,500,560,620,680,740,800].map((y, i) => (
+      {[200, 260, 320, 380, 440, 500, 560, 620, 680, 740, 800].map((y, i) => (
         <circle key={i} cx="120" cy={y} r="2.5" fill="rgba(201,168,76,0.20)" />
       ))}
       {/* Jaali dots — right pillar */}
-      {[200,260,320,380,440,500,560,620,680,740,800].map((y, i) => (
+      {[200, 260, 320, 380, 440, 500, 560, 620, 680, 740, 800].map((y, i) => (
         <circle key={i} cx="1320" cy={y} r="2.5" fill="rgba(201,168,76,0.20)" />
       ))}
       <defs>
         <linearGradient id="goldLine" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%"   stopColor="transparent" />
-          <stop offset="30%"  stopColor="#C9A84C" stopOpacity="0.5" />
-          <stop offset="70%"  stopColor="#C9A84C" stopOpacity="0.5" />
+          <stop offset="0%" stopColor="transparent" />
+          <stop offset="30%" stopColor="#C9A84C" stopOpacity="0.5" />
+          <stop offset="70%" stopColor="#C9A84C" stopOpacity="0.5" />
           <stop offset="100%" stopColor="transparent" />
         </linearGradient>
       </defs>
@@ -75,7 +76,7 @@ function ArchOverlay() {
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [loaded, setLoaded]   = useState(false)
+  const [loaded, setLoaded] = useState(false)
   const isVideo = heroConfig.type === 'video'
 
   useEffect(() => {
@@ -97,12 +98,20 @@ export default function HeroSection() {
         />
       ) : (
         /* eslint-disable-next-line @next/next/no-img-element */
-        <img
-        // uncomment the below 2 lines to have any image in the homepage main section background/hero section
-          // src={heroConfig.src}
-          // alt="Gemstone Traders hero"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        // <img
+        // // uncomment the below 2 lines to have any image in the homepage main section background/hero section
+        //   // src={heroConfig.src}
+        //   // alt="Gemstone Traders hero"
+        //   className="absolute inset-0 w-full h-full object-cover"
+        // />
+         heroConfig.src ? (
+        <Image
+          src={heroConfig.src}
+          alt="Vasavi Gems hero"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"/>) : null
       )}
 
       {/* ── Gradient overlays ──────────────────── */}
@@ -116,9 +125,8 @@ export default function HeroSection() {
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         {/* Pre-title */}
         <div
-          className={`flex items-center justify-center gap-3 mb-6 transition-all duration-1000 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
+          className={`flex items-center justify-center gap-3 mb-6 transition-all duration-1000 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
         >
           <div className="h-px w-12 bg-gold opacity-60" />
           <span className="font-accent text-xs tracking-[0.3em] text-gold uppercase">
@@ -129,9 +137,8 @@ export default function HeroSection() {
 
         {/* Main headline */}
         <h1
-          className={`font-display font-light text-ivory leading-tight mb-6 transition-all duration-1000 delay-200 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}
+          className={`font-display font-light text-ivory leading-tight mb-6 transition-all duration-1000 delay-200 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
           style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}
         >
           {siteConfig.tagline.split('. ').map((line, i) => (
@@ -152,18 +159,16 @@ export default function HeroSection() {
 
         {/* Sub-tagline */}
         <p
-          className={`font-body text-ivory/75 text-lg mb-10 tracking-wide transition-all duration-1000 delay-400 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
+          className={`font-body text-ivory/75 text-lg mb-10 tracking-wide transition-all duration-1000 delay-400 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
         >
           {siteConfig.subTagline}
         </p>
 
         {/* CTA buttons */}
         <div
-          className={`flex flex-wrap gap-4 justify-center transition-all duration-1000 delay-600 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
+          className={`flex flex-wrap gap-4 justify-center transition-all duration-1000 delay-600 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
         >
           <Link href="/portfolio" className="btn-gold">
             Explore Portfolio

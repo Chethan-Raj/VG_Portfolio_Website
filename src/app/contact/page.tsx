@@ -62,7 +62,7 @@ export default function ContactPage() {
               Simply update the action attribute with your endpoint.
             */}
             <form
-              action="https://submit-form.com/2klKTfxdZ"
+              action="https://submit-form.com/u7DNw1PUx"
               method="POST"
               className="space-y-5"
             >

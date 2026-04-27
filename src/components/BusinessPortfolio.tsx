@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { portfolioItems } from '@/lib/config'
+import Image from 'next/image'
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null)
@@ -63,13 +64,12 @@ function PortfolioCard({
           />
           {/* Actual image — overlays gradient when it loads */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={item.image}
             alt={item.title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
-            onError={(e) => {
-              ;(e.target as HTMLImageElement).style.opacity = '0'
-            }}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-108"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-espresso/0 group-hover:bg-espresso/30 transition-all duration-400" />
