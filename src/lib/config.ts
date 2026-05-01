@@ -9,7 +9,7 @@ export const siteConfig = {
   name: 'Vasavi Gems',
   tagline: 'Exquisite Gemstones. Timeless Value.',
   subTagline: 'Sourcing rare beauty. Building lasting legacies.',
-  email: 'vasavimys@gmail.com',
+  email: 'vasavigems2005@gmail.com',
   phone: '+91 9590959068',
   address: '#1043, Chandra Complex, KR Hospital road,\n Mysore 570001',
   hours: 'Mon – Sat: 11:00 AM – 9:00 PM',
@@ -51,11 +51,11 @@ export const portfolioItems = [
     highlights: [
       'GIA & IGI certified Natutral Diamonds',
       'Certified Diamond Jewellry',
-      'From tiny sparkles to bold solitaires',
       'IGI Certified Lab Grown Diamonds',
+      'Fancy-Vivid Coloured Diamonds',
     ],
     gallery: [
-      '/assets/images/portfolio/gem-auctions.jpg',
+      '/assets/images/portfolio/PortugueseCutPink.jpg',
     ],
   },
   {
@@ -83,7 +83,7 @@ export const portfolioItems = [
     title: 'Custom Jewelry',
     shortDesc: 'Bespoke creations crafted to reflect your unique vision.',
     image: '/assets/images/portfolio/c2.jpeg',
-    heroImage: '/assets/images/portfolio/c3.jpeg',
+    heroImage: '/assets/images/portfolio/Bangles.jpg',
     color: '#9A7535', // gold accent
     category: 'Craftsmanship',
     overview:
@@ -96,6 +96,9 @@ export const portfolioItems = [
     ],
     gallery: [
       '/assets/images/portfolio/CustomJewellery.jpeg',
+      '/assets/images/portfolio/set.jpg',
+      '/assets/images/portfolio/Bangles2.jpg',
+      '/assets/images/portfolio/pendant.jpg',
     ],
   },
   {
@@ -135,15 +138,16 @@ export const portfolioItems = [
       'Bracelets and Healing stones',
     ],
     gallery: [
-      '/assets/images/portfolio/investment-consultancy.jpg',
+      '/assets/images/portfolio/Pearls.jpg',
+      '/assets/images/portfolio/Culturedpearls.jpg',
     ],
   },
   {
     slug: 'goleyBuchel-distribution',
     title: 'Goley Buchel Distribution',
     shortDesc: 'Engraved Elegance in Precision-Cut CZ',
-    image: '/assets/images/portfolio/investment-consultancy.jpg',
-    heroImage: '/assets/images/portfolio/investment-consultancy.jpg',
+    image: '/assets/images/portfolio/GB White.jpg',
+    heroImage: '/assets/images/portfolio/GB Colors.jpg',
     color: '#C9A84C', // gold
     category: 'Signature zirconia',
     overview:
@@ -152,10 +156,13 @@ export const portfolioItems = [
       'Manufacturing Supply',
       'White and Fancy colors',
       'Round, cushion, pear — and a world of extraordinary shapes.',
-      'Trusted by High CZ divisions',
+      'Laser Marked with "GB Brillance"',
     ],
     gallery: [
-      '/assets/images/portfolio/investment-consultancy.jpg',
+      '/assets/images/portfolio/GB Colors.jpg',
+      '/assets/images/portfolio/GB fancy Colors.jpg',
+      '/assets/images/portfolio/GB White.jpg',
+      
     ],
   },
 ]

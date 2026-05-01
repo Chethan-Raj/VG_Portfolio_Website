@@ -20,10 +20,10 @@ const securityHeaders = [
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https:",                  // https: allows any HTTPS image host
       "connect-src 'self'",
-      "frame-src https://www.google.com",                                   // no iframes allowed
+      "frame-src https://www.google.com https://submit-form.com",                                   // no iframes allowed
       "object-src 'none'",                                  // blocks Flash/plugins
       "base-uri 'self'",
-      "form-action 'self'",
+      "form-action 'self' https://submit-form.com",
       "upgrade-insecure-requests",                          // auto-upgrades HTTP sub-resources to HTTPS
     ].join('; '),
   },
