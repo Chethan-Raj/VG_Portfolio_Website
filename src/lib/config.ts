@@ -10,13 +10,13 @@ export const siteConfig = {
   tagline: 'Exquisite Gemstones. Timeless Value.',
   subTagline: 'Sourcing rare beauty. Building lasting legacies.',
   email: 'vasavigems2005@gmail.com',
-  phone: '+91 9590959068',
+  phone: '+91 ',
   address: '#1043, Chandra Complex, KR Hospital road,\n Mysore 570001',
-  hours: 'Mon – Sat: 11:00 AM – 9:00 PM',
+  hours: 'Mon – Sat: 12:00 AM – 8:00 PM',
   mapEmbedUrl:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.62750659527998!2d76.65520756116553!3d12.313086108957698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf7013271a7a25%3A0x36a7b9ca85e0ee8b!2sVasavi%20Gems!5e0!3m2!1sen!2sin!4v1768634442404!5m2!1sen!2sin',
   social: {
-    whatsapp: 'https://wa.me/+919590959068?text=Hello,',
+    whatsapp: 'https://wa.me/+?text=Hello,',
     // twitter:   'https://twitter.com',
     instagram: 'https://instagram.com',
   },
@@ -42,8 +42,8 @@ export const portfolioItems = [
     slug: 'diamonds',
     title: 'Diamonds',
     shortDesc: 'Eternal brilliance that celebrates your journey.',
-    image: '/assets/images/portfolio/diamonds.jpg',
-    heroImage: '/assets/images/portfolio/diamonds.jpg',
+    image: '/assets/images/portfolio/gia.jpg',
+    heroImage: '/assets/images/portfolio/brc.jpg',
     color: '#1A3A6B', // sapphire accent
     category: 'Brilliance',
     overview:
@@ -55,15 +55,19 @@ export const portfolioItems = [
       'Fancy-Vivid Coloured Diamonds',
     ],
     gallery: [
+      '/assets/images/portfolio/gia.jpg',
       '/assets/images/portfolio/PortugueseCutPink.jpg',
+      '/assets/images/portfolio/bag.jpg',
+      '/assets/images/portfolio/blue.png',
+      '/assets/images/portfolio/lgcerti.jpg',
     ],
   },
   {
     slug: 'gemstones',
     title: 'Gemstones',
     shortDesc: 'Handpicked, natural wonders from around the world.',
-    image: '/assets/images/portfolio/rare-gemstones.jpg',
-    heroImage: '/assets/images/portfolio/rare-gemstones.jpg',
+    image: '/assets/images/portfolio/ys.jpg',
+    heroImage: '/assets/images/portfolio/ys2.jpg',
     color: '#1B6B4A', // emerald accent
     category: 'Collection',
     overview:
@@ -125,8 +129,8 @@ export const portfolioItems = [
     slug: 'beads',
     title: 'Beads',
     shortDesc: 'Wide range of beads, including natural,semi-precious, and synthetic varieties.',
-    image: '/assets/images/portfolio/investment-consultancy.jpg',
-    heroImage: '/assets/images/portfolio/investment-consultancy.jpg',
+    image: '/assets/images/portfolio/FWPearls.jpg',
+    heroImage: '/assets/images/portfolio/ruby.jpg',
     color: '#2773F5', // gold
     category: 'Beads',
     overview:
@@ -138,7 +142,8 @@ export const portfolioItems = [
       'Bracelets and Healing stones',
     ],
     gallery: [
-      '/assets/images/portfolio/Pearls.jpg',
+      '/assets/images/portfolio/nav.jpg',
+      '/assets/images/portfolio/opals.jpg',
       '/assets/images/portfolio/Culturedpearls.jpg',
     ],
   },

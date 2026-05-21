@@ -38,7 +38,7 @@ export default function PortfolioPage() {
           </h1>
           <div className="ornament-line mx-auto mb-4" />
           <p className="font-body text-muted max-w-xl mx-auto">
-            Five distinct specialisations — each a facet of our commitment to the extraordinary.
+            Six distinct specialisations — each a facet of our commitment to the extraordinary.
           </p>
         </div>
 
