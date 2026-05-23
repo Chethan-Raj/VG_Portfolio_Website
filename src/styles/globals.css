@@ -166,3 +166,53 @@ body {
 /* ── Section spacing ───────────────────────────────────── */
 .section-pad { padding: 96px 0; }
 @media (max-width: 768px) { .section-pad { padding: 64px 0; } }
+
+/* ── Shadow utilities used in components ───────────────── */
+/* BUG FIX: shadow-card and shadow-card-hover and shadow-gold-glow were used
+   in components but never defined — Tailwind doesn't know these custom names. */
+.shadow-card {
+  box-shadow: 0 4px 24px rgba(44, 26, 14, 0.10);
+}
+.shadow-card-hover {
+  box-shadow: 0 8px 40px rgba(44, 26, 14, 0.16);
+}
+.shadow-gold-glow {
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.2), 0 8px 32px rgba(201, 168, 76, 0.12);
+}
+
+/* ── BUG FIX: group-hover:scale-108 used in BusinessPortfolio.tsx
+   but Tailwind only ships scale values in increments of 5 by default (105, 110).
+   Define it as a custom utility. ───────────────────────────────────────────── */
+@layer utilities {
+  .group:hover .group-hover\:scale-108 {
+    transform: scale(1.08);
+  }
+
+  /* ── bg-gold\/8 used in LocationSection — Tailwind generates /5, /10 etc.
+     but not /8. Define it explicitly. ────────────────────────────────────── */
+  .bg-gold\/8 {
+    background-color: rgba(201, 168, 76, 0.08);
+  }
+
+  /* ── Focus visible ring for accessibility ──────────────────────────────── */
+  .focus-ring {
+    outline: 2px solid #C9A84C;
+    outline-offset: 2px;
+  }
+}
+
+/* ── Reduce motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .card-lift,
+  .card-lift:hover {
+    transform: none;
+  }
+  .btn-gold:hover {
+    transform: none;
+  }
+}

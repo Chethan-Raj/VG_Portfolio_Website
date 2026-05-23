@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Business Portfolio',
-  description: 'Explore our five pillars of gemstone expertise.',
+  description: 'Explore our Six pillars of gemstone expertise.',
 }
 
 const GRADIENTS = [

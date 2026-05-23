@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { MapPin, Phone, Mail, Clock, ChevronDown } from 'lucide-react'
 import { siteConfig } from '@/lib/config'
 
@@ -22,6 +22,33 @@ export default function ContactPage() {
   const [phone, setPhone]         = useState('')
   const [showDrop, setShowDrop]   = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  // BUG FIX: track actual submission state separately from optimistic UI
+  // Original: onSubmit fired setSubmitted after 800ms regardless of network result.
+  // Now we listen to the hidden iframe load event to confirm delivery.
+  const [submitting, setSubmitting] = useState(false)
+  const dropRef = useRef<HTMLDivElement>(null)
+
+  // BUG FIX: clicking outside the country dropdown didn't close it.
+  useEffect(() => {
+    if (!showDrop) return
+    function handleOutside(e: MouseEvent) {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
+        setShowDrop(false)
+      }
+    }
+    document.addEventListener('mousedown', handleOutside)
+    return () => document.removeEventListener('mousedown', handleOutside)
+  }, [showDrop])
+
+  // BUG FIX: original used setTimeout(800ms) to fake success — if network is
+  // slow the iframe hasn't loaded yet and we'd show "success" before delivery.
+  // We use the iframe's onLoad event instead.
+  function handleIframeLoad() {
+    if (submitting) {
+      setSubmitted(true)
+      setSubmitting(false)
+    }
+  }
 
   const inputCls =
     'w-full px-4 py-3 bg-white border border-sand/60 rounded-sm font-body text-sm text-espresso placeholder-muted/50 focus:outline-none focus:border-gold transition-colors duration-200'
@@ -29,8 +56,14 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-ivory">
 
-      {/* Hidden iframe — receives form POST response so page doesn't navigate */}
-      <iframe name="hidden-submit" style={{ display: 'none' }} title="form-target" />
+      {/* Hidden iframe — receives form POST response */}
+      <iframe
+        name="hidden-submit"
+        style={{ display: 'none' }}
+        title="form-target"
+        // BUG FIX: onLoad fires when the iframe receives the response
+        onLoad={handleIframeLoad}
+      />
 
       {/* ── Page hero ─────────────────────────── */}
       <div className="relative bg-espresso pt-36 pb-20 overflow-hidden">
@@ -97,9 +130,12 @@ export default function ContactPage() {
                 action="https://submit-form.com/u7DNw1PUx"
                 method="POST"
                 target="hidden-submit"
-                onSubmit={() => setTimeout(() => setSubmitted(true), 800)}
+                onSubmit={() => setSubmitting(true)}
                 className="space-y-5"
               >
+                {/* SECURITY: Honeypot field — bots fill this, humans don't see it */}
+                <input type="text" name="_honeypot" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+
                 {/* Name + Email */}
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
@@ -110,6 +146,8 @@ export default function ContactPage() {
                       type="text"
                       name="name"
                       required
+                      minLength={2}
+                      maxLength={100}
                       placeholder="Your name"
                       className={inputCls}
                     />
@@ -122,6 +160,7 @@ export default function ContactPage() {
                       type="email"
                       name="email"
                       required
+                      maxLength={254}
                       placeholder="your@email.com"
                       className={inputCls}
                     />
@@ -137,11 +176,13 @@ export default function ContactPage() {
                   <input type="hidden" name="phone" value={`${country.dial} ${phone}`} />
                   <div className="flex gap-2">
 
-                    {/* Country dropdown */}
-                    <div className="relative flex-shrink-0">
+                    {/* Country dropdown — BUG FIX: added ref for outside-click close */}
+                    <div className="relative flex-shrink-0" ref={dropRef}>
                       <button
                         type="button"
                         onClick={() => setShowDrop(d => !d)}
+                        aria-expanded={showDrop}
+                        aria-haspopup="listbox"
                         className="flex items-center gap-1.5 px-3 py-3 h-full bg-white border border-sand/60 rounded-sm text-sm font-body text-espresso focus:outline-none focus:border-gold transition-colors whitespace-nowrap"
                       >
                         <span>{country.flag}</span>
@@ -149,11 +190,16 @@ export default function ContactPage() {
                         <ChevronDown size={12} className="text-muted" />
                       </button>
                       {showDrop && (
-                        <div className="absolute z-50 top-full left-0 mt-1 w-44 bg-white border border-sand/60 rounded-sm shadow-card max-h-56 overflow-y-auto">
+                        <div
+                          role="listbox"
+                          className="absolute z-50 top-full left-0 mt-1 w-44 bg-white border border-sand/60 rounded-sm shadow-card max-h-56 overflow-y-auto"
+                        >
                           {COUNTRIES.map(c => (
                             <button
                               key={c.code}
                               type="button"
+                              role="option"
+                              aria-selected={c.code === country.code}
                               onClick={() => { setCountry(c); setPhone(''); setShowDrop(false) }}
                               className="w-full flex items-center gap-2 px-3 py-2 text-sm font-body text-espresso hover:bg-gold/10 transition-colors text-left"
                             >
@@ -198,11 +244,13 @@ export default function ContactPage() {
                     className={inputCls}
                   >
                     <option value="" disabled>Select a service...</option>
-                    <option value="gem-auctions">Diamonds</option>
+                    <option value="diamonds">Diamonds</option>
                     <option value="rare-gemstones">Gemstones</option>
                     <option value="custom-jewelry">Custom Jewelry</option>
                     <option value="gemstone-sourcing">Gemstone Sourcing</option>
-                    <option value="investment-consultancy">GB-CZ Bulk Program</option>
+                    {/* BUG FIX: "Beads" portfolio item had no matching contact option */}
+                    <option value="beads">Beads</option>
+                    <option value="gb-cz-bulk">GB-CZ Bulk Program</option>
                   </select>
                 </div>
 
@@ -214,6 +262,8 @@ export default function ContactPage() {
                   <textarea
                     name="message"
                     required
+                    minLength={10}
+                    maxLength={2000}
                     rows={5}
                     placeholder="Tell us about your requirements..."
                     className={`${inputCls} resize-none`}
@@ -222,9 +272,10 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="btn-gold w-full justify-center !py-4 text-sm"
+                  disabled={submitting}
+                  className="btn-gold w-full justify-center !py-4 text-sm disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {submitting ? 'Sending…' : 'Send Message'}
                 </button>
               </form>
             )}
@@ -243,7 +294,7 @@ export default function ContactPage() {
               <div className="space-y-5">
                 {[
                   { Icon: MapPin, label: 'Address', value: `${siteConfig.name}, ${siteConfig.address}` },
-                  { Icon: Phone, label: 'Phone',   value: siteConfig.phone, href: `tel:${siteConfig.phone}` },
+                  { Icon: Phone, label: 'Phone',   value: siteConfig.phone, href: `tel:${siteConfig.phone.replace(/\s/g, '')}` },
                   { Icon: Mail,  label: 'Email',   value: siteConfig.email, href: `mailto:${siteConfig.email}` },
                   { Icon: Clock, label: 'Hours',   value: siteConfig.hours },
                 ].map(({ Icon, label, value, href }) => (
@@ -255,7 +306,7 @@ export default function ContactPage() {
                       <p className="font-accent text-[10px] tracking-widest text-muted uppercase mb-0.5">{label}</p>
                       {href
                         ? <a href={href} className="font-body text-sm text-espresso hover:text-gold transition-colors">{value}</a>
-                        : <p className="font-body text-sm text-espresso">{value}</p>
+                        : <p className="font-body text-sm text-espresso whitespace-pre-line">{value}</p>
                       }
                     </div>
                   </div>

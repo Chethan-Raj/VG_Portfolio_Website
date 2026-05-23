@@ -10,15 +10,14 @@ export const siteConfig = {
   tagline: 'Exquisite Gemstones. Timeless Value.',
   subTagline: 'Sourcing rare beauty. Building lasting legacies.',
   email: 'vasavigems2005@gmail.com',
-  phone: '+91 ',
+  phone: '+91 111111111',
   address: '#1043, Chandra Complex, KR Hospital road,\n Mysore 570001',
-  hours: 'Mon – Sat: 12:00 AM – 8:00 PM',
+  hours: 'Mon – Sat: 12:00 PM – 8:00 PM',
   mapEmbedUrl:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.62750659527998!2d76.65520756116553!3d12.313086108957698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf7013271a7a25%3A0x36a7b9ca85e0ee8b!2sVasavi%20Gems!5e0!3m2!1sen!2sin!4v1768634442404!5m2!1sen!2sin',
   social: {
-    whatsapp: 'https://wa.me/+?text=Hello,',
-    // twitter:   'https://twitter.com',
-    instagram: 'https://instagram.com',
+    whatsapp: 'https://wa.me/91111111111?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20gemstones.',
+    instagram: 'https://instagram.com/vasavigems',
   },
 }
 
@@ -49,8 +48,8 @@ export const portfolioItems = [
     overview:
       'From the depths of the Earth, forged in molten fire, destined to glow when I find you — The Diamond.',
     highlights: [
-      'GIA & IGI certified Natutral Diamonds',
-      'Certified Diamond Jewellry',
+      'GIA & IGI certified Natural Diamonds',
+      'Certified Diamond Jewellery',
       'IGI Certified Lab Grown Diamonds',
       'Fancy-Vivid Coloured Diamonds',
     ],
@@ -94,7 +93,7 @@ export const portfolioItems = [
       'Every custom piece begins with a conversation. Our master artisans translate your vision into wearable heritage — combining centuries-old craft with contemporary design trends.',
     highlights: [
       'Online/Offline design consultation',
-      'Wide range of cutsom designs',
+      'Wide range of custom designs',
       'Traditional Hand-Craft and advanced 3D designs',
       'CAD preview confirmation',
     ],
@@ -114,11 +113,11 @@ export const portfolioItems = [
     color: '#8B1A2A', // ruby accent
     category: 'Trade',
     overview:
-      'We maintain direct relationships with operations across the world — ensuring mine to market.',
+      'We maintain direct relationships with operations across the world — ensuring mine to market transparency.',
     highlights: [
       'Bulk & wholesale programs',
       'Custom parameter gemstones',
-      'Recutting gemstones ',
+      'Recutting gemstones',
       'Custom procurement briefs',
     ],
     gallery: [
@@ -128,21 +127,22 @@ export const portfolioItems = [
   {
     slug: 'beads',
     title: 'Beads',
-    shortDesc: 'Wide range of beads, including natural,semi-precious, and synthetic varieties.',
+    shortDesc: 'Diverse range of beads in natural, semi-precious, and synthetic materials.',
     image: '/assets/images/portfolio/FWPearls.jpg',
     heroImage: '/assets/images/portfolio/ruby.jpg',
-    color: '#2773F5', // gold
+    color: '#2773F5',
     category: 'Beads',
     overview:
       'We supply a comprehensive range of beads, including natural, synthetic, and semi-precious varieties, suitable for diverse applications. Our products are available in multiple sizes, colors, and quality grades, ensuring consistent supply and flexibility to meet different design, production, and market requirements.',
     highlights: [
       'Precious Beads',
       'Semi-Precious Beads',
-      'Synthetic Beads.',
+      'Synthetic Beads',
       'Bracelets and Healing stones',
     ],
     gallery: [
       '/assets/images/portfolio/nav.jpg',
+      '/assets/images/portfolio/ruby.jpg',
       '/assets/images/portfolio/opals.jpg',
       '/assets/images/portfolio/Culturedpearls.jpg',
     ],
@@ -150,35 +150,34 @@ export const portfolioItems = [
   {
     slug: 'goleyBuchel-distribution',
     title: 'Goley Buchel Distribution',
-    shortDesc: 'Engraved Elegance in Precision-Cut CZ',
+    shortDesc: 'Engraved Elegance in Precision-Cut Cubic Zirconia - CZ',
     image: '/assets/images/portfolio/GB White.jpg',
     heroImage: '/assets/images/portfolio/GB Colors.jpg',
-    color: '#C9A84C', // gold
-    category: 'Signature zirconia',
+    color: '#C9A84C',
+    category: 'Signature Zirconia',
     overview:
       'Crafted with care and engineered for radiance, our CZ stones combine artistry and science. Every stone is master-cut and polished to perfection, reflecting light beautifully and providing timeless elegance.',
     highlights: [
       'Manufacturing Supply',
       'White and Fancy colors',
-      'Round, cushion, pear — and a world of extraordinary shapes.',
-      'Laser Marked with "GB Brillance"',
+      'Round, cushion, pear — and a world of extraordinary shapes',
+      'Laser Marked with "GB Brilliance"',
     ],
     gallery: [
       '/assets/images/portfolio/GB Colors.jpg',
       '/assets/images/portfolio/GB fancy Colors.jpg',
       '/assets/images/portfolio/GB White.jpg',
-      
     ],
   },
 ]
 
 // ── About ─────────────────────────────────────────────────────
 export const aboutConfig = {
-  image: '/assets/images/AbtUs.png',  // ← swap filename here
+  image: '/assets/images/AbtUs.png',
   pillars: [
     { icon: 'diamond', label: 'Decades of\nExpertise' },
-    { icon: 'globe', label: 'Global Trusted\nNetwork' },
-    { icon: 'moon', label: 'Governed by integrity &\n transparency' },
-    { icon: 'star', label: 'Commitment to\nExcellence' },
+    { icon: 'globe',   label: 'Global Trusted\nNetwork' },
+    { icon: 'scale',   label: 'Governed by integrity &\n transparency' },
+    { icon: 'star',    label: 'Commitment to\nExcellence' },
   ],
 }
