@@ -1,23 +1,8 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { siteConfig } from '@/lib/config'
-
-function useReveal() {
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { el.classList.add('visible'); obs.disconnect() } },
-      { threshold: 0.1 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
-  return ref
-}
+import { useReveal } from '@/lib/hooks/useReveal'
 
 const contactItems = [
   {
@@ -45,8 +30,8 @@ const contactItems = [
 ]
 
 export default function LocationSection() {
-  const leftRef  = useReveal()
-  const rightRef = useReveal()
+  const leftRef  = useReveal(0.1)
+  const rightRef = useReveal(0.1)
 
   return (
     <section id="location" className="section-pad bg-espresso texture-overlay">

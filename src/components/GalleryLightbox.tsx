@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
 
 interface GalleryLightboxProps {
@@ -11,9 +11,19 @@ interface GalleryLightboxProps {
 
 export default function GalleryLightbox({ images, title, accentColor }: GalleryLightboxProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  // A11y: remember which thumbnail opened the lightbox so focus can
+  // return there on close, instead of being lost to <body>.
+  const triggerRef = useRef<HTMLElement | null>(null)
+  const closeBtnRef = useRef<HTMLButtonElement>(null)
 
-  const open  = (i: number) => setActiveIndex(i)
-  const close = useCallback(() => setActiveIndex(null), [])
+  const open  = (i: number, e?: React.MouseEvent<HTMLButtonElement>) => {
+    triggerRef.current = e?.currentTarget ?? null
+    setActiveIndex(i)
+  }
+  const close = useCallback(() => {
+    setActiveIndex(null)
+    triggerRef.current?.focus()
+  }, [])
 
   const prev = useCallback(() =>
     setActiveIndex(i => (i === null ? null : (i - 1 + images.length) % images.length)),
@@ -39,6 +49,12 @@ export default function GalleryLightbox({ images, title, accentColor }: GalleryL
     return () => { document.body.style.overflow = '' }
   }, [activeIndex])
 
+  // A11y: move focus into the dialog when it opens so keyboard/screen-reader
+  // users aren't left focused on a thumbnail hidden behind the overlay.
+  useEffect(() => {
+    if (activeIndex !== null) closeBtnRef.current?.focus()
+  }, [activeIndex])
+
   return (
     <>
       {/* ── Gallery grid ─────────────────────── */}
@@ -46,7 +62,7 @@ export default function GalleryLightbox({ images, title, accentColor }: GalleryL
         {images.map((src, i) => (
           <button
             key={i}
-            onClick={() => open(i)}
+            onClick={(e) => open(i, e)}
             className="group relative rounded-sm overflow-hidden aspect-video shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
             aria-label={`View ${title} image ${i + 1}`}
           >
@@ -74,11 +90,15 @@ export default function GalleryLightbox({ images, title, accentColor }: GalleryL
       {/* ── Lightbox overlay ─────────────────── */}
       {activeIndex !== null && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${title} image preview`}
           className="fixed inset-0 z-50 flex items-center justify-center"
           style={{ background: 'rgba(28,14,6,0.95)' }}
           onClick={close}
         >
           <button
+            ref={closeBtnRef}
             onClick={close}
             className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200"
             style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.35)' }}

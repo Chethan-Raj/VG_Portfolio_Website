@@ -97,21 +97,16 @@ export default function HeroSection() {
           className="absolute inset-0 w-full h-full object-cover"
         />
       ) : (
-        /* eslint-disable-next-line @next/next/no-img-element */
-        // <img
-        // // uncomment the below 2 lines to have any image in the homepage main section background/hero section
-        //   // src={heroConfig.src}
-        //   // alt="Gemstone Traders hero"
-        //   className="absolute inset-0 w-full h-full object-cover"
-        // />
-         heroConfig.src ? (
-        <Image
-          src={heroConfig.src}
-          alt="Vasavi Gems hero"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"/>) : null
+        heroConfig.src ? (
+          <Image
+            src={heroConfig.src}
+            alt="Vasavi Gems hero"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        ) : null
       )}
 
       {/* ── Gradient overlays ──────────────────── */}

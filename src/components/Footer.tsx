@@ -50,10 +50,8 @@ export default function Footer() {
         {/* Quick nav */}
         <nav aria-label="Footer navigation" className="flex items-center gap-4 md:justify-self-end">
           {[
-             { href: '/portfolio', label: 'Portfolio' },
-//             { href: '/about',     label: 'About' },
+            { href: '/portfolio', label: 'Portfolio' },
             { href: '/contact',   label: 'Work with Us' },
-
           ].map(({ href, label }) => (
             <Link
               key={href}

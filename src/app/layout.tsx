@@ -7,7 +7,8 @@ import SkipNav from '@/components/SkipNav'
 
 // BUG FIX: OG image and canonical URL missing — hurts social sharing and SEO.
 // Add your actual deployed domain below.
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vasavigems.com'
+// const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vasavigems.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vgmys-portfolio.netlify.app'
 
 export const metadata: Metadata = {
   title: {
@@ -47,6 +48,28 @@ export const metadata: Metadata = {
   },
 }
 
+// SEO: LocalBusiness structured data — a physical jewellery/gem store had
+// zero JSON-LD, so Google had no basis for rich snippets, Knowledge Panel
+// eligibility, or map-pack matching beyond the raw address text.
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Gemstones',
+  name: siteConfig.name,
+  description: siteConfig.subTagline,
+  url: SITE_URL,
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.address.split('\n')[0]?.trim(),
+    addressLocality: 'Mysore',
+    addressRegion: 'Karnataka',
+    addressCountry: 'IN',
+  },
+  openingHours: 'Mo-Sa 12:00-20:00',
+  sameAs: [siteConfig.social.instagram],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -62,6 +85,11 @@ export default function RootLayout({
         */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
       </head>
       <body className="min-h-screen bg-ivory font-body text-espresso antialiased">
         <SkipNav />

@@ -1,40 +1,10 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { portfolioItems } from '@/lib/config'
+import { portfolioItems, portfolioGradients } from '@/lib/config'
 import Image from 'next/image'
-
-function useReveal() {
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('visible')
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.15 }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-  return ref
-}
-
-// Fallback gradient when no image provided
-const PLACEHOLDER_GRADIENTS = [
-  'linear-gradient(135deg, #1B6B4A 0%, #2C4A3A 100%)',
-  'linear-gradient(135deg, #9A7535 0%, #C9A84C 100%)',
-  'linear-gradient(135deg, #1A3A6B 0%, #2C3A6B 100%)',
-  'linear-gradient(135deg, #8B1A2A 0%, #6B1020 100%)',
-  'linear-gradient(135deg, #8B1A87 0%, #561A8B 100%)',
-  'linear-gradient(135deg, #C9A84C 0%, #9A7535 100%)',
-]
+import { useReveal } from '@/lib/hooks/useReveal'
 
 function PortfolioCard({
   item,
@@ -60,7 +30,7 @@ function PortfolioCard({
           {/* Gradient fallback */}
           <div
             className="absolute inset-0"
-            style={{ background: PLACEHOLDER_GRADIENTS[index] }}
+            style={{ background: portfolioGradients[index] }}
           />
           {/* Actual image — overlays gradient when it loads */}
           {/* eslint-disable-next-line @next/next/no-img-element */}

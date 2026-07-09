@@ -1,35 +1,14 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { Diamond, Globe, Scale, Star } from 'lucide-react'
+import { Diamond } from 'lucide-react'
 import { aboutConfig } from '@/lib/config'
-
-function useReveal(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { el.classList.add('visible'); obs.disconnect() } },
-      { threshold }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-  return ref
-}
-
-const ICON_MAP: Record<string, React.ElementType> = {
-  diamond: Diamond,
-  globe:   Globe,
-  scale:   Scale,
-  star:    Star,
-}
+import { useReveal } from '@/lib/hooks/useReveal'
+import { PILLAR_ICON_MAP } from '@/lib/icons'
 
 function Pillar({ icon, label, delay }: { icon: string; label: string; delay: number }) {
   const ref = useReveal()
-  const Icon = ICON_MAP[icon] || Diamond
+  const Icon = PILLAR_ICON_MAP[icon] || Diamond
   return (
     <div ref={ref} className="reveal flex flex-col items-center text-center gap-3"
       style={{ transitionDelay: `${delay}ms` }}>

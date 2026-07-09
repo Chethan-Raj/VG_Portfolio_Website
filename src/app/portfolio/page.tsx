@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { portfolioItems } from '@/lib/config'
+import { portfolioItems, portfolioGradients } from '@/lib/config'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
@@ -8,15 +8,6 @@ export const metadata: Metadata = {
   title: 'Business Portfolio',
   description: 'Explore our Six pillars of gemstone expertise.',
 }
-
-const GRADIENTS = [
-  'linear-gradient(135deg, #1B6B4A 0%, #2C4A3A 100%)',
-  'linear-gradient(135deg, #9A7535 0%, #C9A84C 100%)',
-  'linear-gradient(135deg, #1A3A6B 0%, #2C3A6B 100%)',
-  'linear-gradient(135deg, #8B1A2A 0%, #6B1020 100%)',
-  'linear-gradient(135deg, #8B1A87 0%, #561A8B 100%)',
-  'linear-gradient(135deg, #C9A84C 0%, #9A7535 100%)',
-]
 
 export default function PortfolioPage() {
   return (
@@ -52,21 +43,14 @@ export default function PortfolioPage() {
             >
               {/* Image */}
               <div className="relative h-64 overflow-hidden">
-                <div className="absolute inset-0" style={{ background: GRADIENTS[i] }} />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                {/* <img
+                <div className="absolute inset-0" style={{ background: portfolioGradients[i] }} />
+                <Image
                   src={item.image}
                   alt={item.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                /> */
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                }
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
                 <div className="absolute inset-0 bg-espresso/0 group-hover:bg-espresso/25 transition-all duration-400" />
                 <div className="absolute top-3 right-3 bg-espresso/70 backdrop-blur-sm px-2.5 py-1 rounded-sm">
                   <span className="font-accent text-[10px] tracking-widest text-gold uppercase">

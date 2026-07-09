@@ -1,18 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Diamond, Globe, Scale, Star, ArrowRight } from 'lucide-react'
+import { Diamond, ArrowRight } from 'lucide-react'
 import { aboutConfig, siteConfig } from '@/lib/config'
+import { PILLAR_ICON_MAP } from '@/lib/icons'
 
 export const metadata: Metadata = {
   title: 'About Us',
   description: 'With generations of expertise, Gemstone Traders connects the world to nature\'s most extraordinary treasures.',
-}
-
-const ICON_MAP: Record<string, React.ElementType> = {
-  diamond: Diamond,
-  globe:   Globe,
-  scale:   Scale,
-  star:    Star,
 }
 
 const timeline = [
@@ -104,7 +98,7 @@ export default function AboutPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {aboutConfig.pillars.map((p) => {
-              const Icon = ICON_MAP[p.icon] || Diamond
+              const Icon = PILLAR_ICON_MAP[p.icon] || Diamond
               return (
                 <div key={p.icon} className="flex flex-col items-center text-center gap-4">
                   <div className="w-16 h-16 rounded-full border border-gold/40 flex items-center justify-center bg-gold/8">

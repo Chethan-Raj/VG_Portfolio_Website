@@ -10,13 +10,13 @@ export const siteConfig = {
   tagline: 'Exquisite Gemstones. Timeless Value.',
   subTagline: 'Sourcing rare beauty. Building lasting legacies.',
   email: 'vasavigems2005@gmail.com',
-  phone: '+91 111111111',
+  phone: '+91 77483803434',
   address: '#1043, Chandra Complex, KR Hospital road,\n Mysore 570001',
   hours: 'Mon – Sat: 12:00 PM – 8:00 PM',
   mapEmbedUrl:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.62750659527998!2d76.65520756116553!3d12.313086108957698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf7013271a7a25%3A0x36a7b9ca85e0ee8b!2sVasavi%20Gems!5e0!3m2!1sen!2sin!4v1768634442404!5m2!1sen!2sin',
   social: {
-    whatsapp: 'https://wa.me/91111111111?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20gemstones.',
+    whatsapp: 'https://wa.me/7483803434?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20gemstones.',
     instagram: 'https://instagram.com/vasavigems',
   },
 }
@@ -32,6 +32,20 @@ export const heroConfig = {
   videoSrc: '/assets/videos/hero.mp4',     // ← used when type === "video"
   poster: '/assets/images/hero.jpg',       // ← video poster frame
 }
+
+// ── Portfolio card fallback gradients ──────────────────────────
+// Shown behind/under the portfolio images (loading state + fallback
+// if an image 404s). Index-matched to portfolioItems below.
+// Was duplicated as PLACEHOLDER_GRADIENTS in BusinessPortfolio.tsx
+// and GRADIENTS in app/portfolio/page.tsx — single source now.
+export const portfolioGradients = [
+  'linear-gradient(135deg, #1B6B4A 0%, #2C4A3A 100%)',
+  'linear-gradient(135deg, #9A7535 0%, #C9A84C 100%)',
+  'linear-gradient(135deg, #1A3A6B 0%, #2C3A6B 100%)',
+  'linear-gradient(135deg, #8B1A2A 0%, #6B1020 100%)',
+  'linear-gradient(135deg, #8B1A87 0%, #561A8B 100%)',
+  'linear-gradient(135deg, #C9A84C 0%, #9A7535 100%)',
+]
 
 // ── Business Portfolio ────────────────────────────────────────
 // Each item gets its own page at /portfolio/[slug]
@@ -57,7 +71,6 @@ export const portfolioItems = [
       '/assets/images/portfolio/gia.jpg',
       '/assets/images/portfolio/PortugueseCutPink.jpg',
       '/assets/images/portfolio/bag.jpg',
-      '/assets/images/portfolio/blue.png',
       '/assets/images/portfolio/lgcerti.jpg',
     ],
   },

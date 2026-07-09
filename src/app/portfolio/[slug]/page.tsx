@@ -41,22 +41,14 @@ export default function PortfolioDetailPage({ params }: Props) {
             background: `linear-gradient(135deg, ${item.color}55 0%, #2C1A0E 100%)`,
           }}
         />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        {/* <img
+        <Image
           src={item.heroImage}
           alt={item.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        /> */
-          <Image
-            src={item.heroImage}
-            alt={item.title}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-
-        }
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-espresso/40 to-espresso/20" />
 
         {/* Arch overlay on detail page */}
