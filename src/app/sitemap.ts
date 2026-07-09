@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { portfolioItems } from '@/lib/config'
 
 // const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vasavigems.com'
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vgmys-portfolio.netlify.app'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'vasavigems.netlify.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

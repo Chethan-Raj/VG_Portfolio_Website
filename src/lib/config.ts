@@ -17,7 +17,7 @@ export const siteConfig = {
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.62750659527998!2d76.65520756116553!3d12.313086108957698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf7013271a7a25%3A0x36a7b9ca85e0ee8b!2sVasavi%20Gems!5e0!3m2!1sen!2sin!4v1768634442404!5m2!1sen!2sin',
   social: {
     whatsapp: 'https://wa.me/7483803434?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20gemstones.',
-    instagram: 'https://instagram.com/vasavigems',
+    instagram: 'https://www.instagram.com/vasavigems',
   },
 }
 

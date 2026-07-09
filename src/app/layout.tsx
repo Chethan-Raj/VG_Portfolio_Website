@@ -8,7 +8,7 @@ import SkipNav from '@/components/SkipNav'
 // BUG FIX: OG image and canonical URL missing — hurts social sharing and SEO.
 // Add your actual deployed domain below.
 // const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vasavigems.com'
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vgmys-portfolio.netlify.app'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'vasavigems.netlify.app'
 
 export const metadata: Metadata = {
   title: {
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.subTagline,
-  keywords: ['gemstones', 'rare gems', 'jewelry', 'investment', 'Mysore', 'India', 'diamonds', 'custom jewellery'],
-  metadataBase: new URL(SITE_URL),
+  keywords: ['gemstones', 'diamonds', 'jewelry', 'sapphires', 'ruby', 'emeralds', 'beads', 'custom jewellery','Designer'],
+//   metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: '/',
   },
