@@ -65,7 +65,7 @@ export default function AboutPage() {
               Founded in the Mysore, India, {siteConfig.name} has spent four decades forging relationships with the world&apos;s finest mines, artisans, and collectors. Our philosophy is simple: every gemstone tells a story, and every client deserves to know it.
             </p>
             <p className="font-body text-muted leading-relaxed mb-4">
-              From the emerald mines of Colombia to the sapphire fields of Sri Lanka,— bringing the rarest of nature&apos;s treasures directly to your hands with full provenance and certification.
+              From the emerald, sapphire, Diamonds bringing the rarest of nature&apos;s treasures directly to your hands with full provenance and certification.
             </p>
             <p className="font-body text-muted leading-relaxed">
               Our commitment to authenticity, quality, and integrity has earned the trust of collectors, investors, and jewellers.

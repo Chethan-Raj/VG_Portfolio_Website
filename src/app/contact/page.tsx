@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { MapPin, Phone, Mail, Clock, ChevronDown } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, ChevronDown,Instagram } from 'lucide-react'
 import { siteConfig } from '@/lib/config'
+
 
 const COUNTRIES = [
   { code: 'IN', dial: '+91',  flag: '🇮🇳', digits: 10 },
@@ -294,8 +295,10 @@ export default function ContactPage() {
               <div className="space-y-5">
                 {[
                   { Icon: MapPin, label: 'Address', value: `${siteConfig.name}, ${siteConfig.address}` },
-                  { Icon: Phone, label: 'Phone',   value: siteConfig.phone, href: `tel:${siteConfig.phone.replace(/\s/g, '')}` },
+                  { Icon: Phone, label: 'Phone - Whatsapp',   value: siteConfig.phone, href: `tel:${siteConfig.phone.replace(/\s/g, '')}` },
                   { Icon: Mail,  label: 'Email',   value: siteConfig.email, href: `mailto:${siteConfig.email}` },
+                  { Icon: Instagram, label: "Instagram - follow for latest Updates",
+                      value: siteConfig.instagram, href: `https://instagram.com/${siteConfig.instagram.replace("@", "")}` },
                   { Icon: Clock, label: 'Hours',   value: siteConfig.hours },
                 ].map(({ Icon, label, value, href }) => (
                   <div key={label} className="flex gap-4">
