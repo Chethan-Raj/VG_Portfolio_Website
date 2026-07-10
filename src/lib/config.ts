@@ -12,7 +12,8 @@ export const siteConfig = {
   email: 'vasavigems2005@gmail.com',
   phone: '+91 77483803434',
   address: '#1043, Chandra Complex, KR Hospital road,\n Mysore 570001',
-  hours: 'Mon – Sat: 12:00 PM – 8:00 PM',
+  hours: 'Mon – Sat: 11:00 PM – 8:00 PM',
+  instagram: '@vasavigems',
   mapEmbedUrl:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.62750659527998!2d76.65520756116553!3d12.313086108957698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf7013271a7a25%3A0x36a7b9ca85e0ee8b!2sVasavi%20Gems!5e0!3m2!1sen!2sin!4v1768634442404!5m2!1sen!2sin',
   social: {
@@ -69,9 +70,12 @@ export const portfolioItems = [
     ],
     gallery: [
       '/assets/images/portfolio/gia.jpg',
+      '/assets/images/portfolio/brc.jpg',
+      '/assets/images/portfolio/PCut.jpg',
       '/assets/images/portfolio/PortugueseCutPink.jpg',
       '/assets/images/portfolio/bag.jpg',
       '/assets/images/portfolio/lgcerti.jpg',
+
     ],
   },
   {
@@ -79,19 +83,25 @@ export const portfolioItems = [
     title: 'Gemstones',
     shortDesc: 'Handpicked, natural wonders from around the world.',
     image: '/assets/images/portfolio/ys.jpg',
-    heroImage: '/assets/images/portfolio/ys2.jpg',
+//     image: '/assets/images/portfolio/Emerald.jpg',
+    heroImage: '/assets/images/portfolio/Emerald.jpg',
     color: '#1B6B4A', // emerald accent
     category: 'Collection',
     overview:
-      'Our gemstone collection spans continents and decades of passionate sourcing. Each stone is certified, graded, and personally selected by our master gemmologists.',
+      'Our gemstone collection spans continents and decades of passionate sourcing. Each stone is certified, graded, and personally selected by professional gemologists.',
     highlights: [
       'Certified Gemstones',
       'Direct manufacturing partnerships',
-      'Investment-grade specimens',
-      'Provenance documentation',
+      'Investment-grade Gemstones',
+      'Provenance documentation - GRS/Gubelin/SSF',
     ],
     gallery: [
-      '/assets/images/portfolio/rare-gemstones.jpg',
+      '/assets/images/portfolio/BSapp.jpg',
+      '/assets/images/portfolio/GRS.jpg',
+      '/assets/images/portfolio/YS3.jpg',
+      '/assets/images/portfolio/Emerald.jpg',
+      '/assets/images/portfolio/BSSL.jpg',
+      '/assets/images/portfolio/BRuby.jpg',
     ],
   },
   {
@@ -112,29 +122,33 @@ export const portfolioItems = [
     ],
     gallery: [
       '/assets/images/portfolio/CustomJewellery.jpeg',
-      '/assets/images/portfolio/set.jpg',
-      '/assets/images/portfolio/Bangles2.jpg',
-      '/assets/images/portfolio/pendant.jpg',
+      '/assets/images/portfolio/Custom1.jpg',
+      '/assets/images/portfolio/Custom2.jpg',
+      '/assets/images/portfolio/C1.jpg',
     ],
   },
   {
     slug: 'gemstone-sourcing',
     title: 'Gemstone Sourcing',
     shortDesc: 'Sourcing with a global network of trusted suppliers.',
-    image: '/assets/images/portfolio/gemstone-sourcing.jpg',
-    heroImage: '/assets/images/portfolio/gemstone-sourcing.jpg',
+    image: '/assets/images/portfolio/GSH.jpg',
+    heroImage: '/assets/images/portfolio/GSH.jpg',
     color: '#8B1A2A', // ruby accent
     category: 'Trade',
     overview:
       'We maintain direct relationships with operations across the world — ensuring mine to market transparency.',
     highlights: [
-      'Bulk & wholesale programs',
+      'Mines based gemstone sourcing',
       'Custom parameter gemstones',
       'Recutting gemstones',
       'Custom procurement briefs',
     ],
     gallery: [
-      '/assets/images/portfolio/gemstone-sourcing.jpg',
+      '/assets/images/portfolio/GS1.jpg',
+      '/assets/images/portfolio/GS5.jpg',
+      '/assets/images/portfolio/GS3.jpg',
+      '/assets/images/portfolio/GS6.jpg',
+      '/assets/images/portfolio/GS4.jpg',
     ],
   },
   {
@@ -142,7 +156,7 @@ export const portfolioItems = [
     title: 'Beads',
     shortDesc: 'Diverse range of beads in natural, semi-precious, and synthetic materials.',
     image: '/assets/images/portfolio/FWPearls.jpg',
-    heroImage: '/assets/images/portfolio/ruby.jpg',
+    heroImage: '/assets/images/portfolio/FWPearls.jpg',
     color: '#2773F5',
     category: 'Beads',
     overview:
@@ -156,7 +170,7 @@ export const portfolioItems = [
     gallery: [
       '/assets/images/portfolio/nav.jpg',
       '/assets/images/portfolio/ruby.jpg',
-      '/assets/images/portfolio/opals.jpg',
+      '/assets/images/portfolio/B1.jpg',
       '/assets/images/portfolio/Culturedpearls.jpg',
     ],
   },
@@ -177,9 +191,13 @@ export const portfolioItems = [
       'Laser Marked with "GB Brilliance"',
     ],
     gallery: [
-      '/assets/images/portfolio/GB Colors.jpg',
+//       '/assets/images/portfolio/GB Colors.jpg',
       '/assets/images/portfolio/GB fancy Colors.jpg',
       '/assets/images/portfolio/GB White.jpg',
+      '/assets/images/portfolio/CZ1.jpg',
+      '/assets/images/portfolio/CZ4.jpg',
+      '/assets/images/portfolio/CZ5.jpg',
+      '/assets/images/portfolio/CZ3.jpg',
     ],
   },
 ]

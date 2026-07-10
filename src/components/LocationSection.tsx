@@ -1,6 +1,6 @@
 'use client'
 
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock,Instagram } from 'lucide-react'
 import { siteConfig } from '@/lib/config'
 import { useReveal } from '@/lib/hooks/useReveal'
 
@@ -9,10 +9,11 @@ const contactItems = [
     icon: MapPin,
     label: siteConfig.name,
     value: siteConfig.address,
+    href: `https://www.google.com/maps?cid=3938320678639431307&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=IN&source=embed`
   },
   {
     icon: Phone,
-    label: 'Phone',
+    label: 'Phone - Whatsapp',
     value: siteConfig.phone,
     href: `tel:${siteConfig.phone.replace(/\s/g, '')}`,
   },
@@ -22,6 +23,12 @@ const contactItems = [
     value: siteConfig.email,
     href: `mailto:${siteConfig.email}`,
   },
+    {
+      icon: Instagram,
+      label: "Instagram - follow for latest Updates",
+      value: siteConfig.instagram,
+      href: `https://instagram.com/${siteConfig.instagram.replace("@", "")}`,
+   },
   {
     icon: Clock,
     label: 'Hours',
