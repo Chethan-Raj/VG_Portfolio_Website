@@ -48,10 +48,33 @@ export const portfolioGradients = [
   'linear-gradient(135deg, #C9A84C 0%, #9A7535 100%)',
 ]
 
+// ── Gallery image type ──────────────────────────────────────────
+// Single source of truth for every gallery image used across the
+// site (ImageCard, Gallery, GalleryLightbox all consume this shape).
+export interface GalleryImage {
+  /** Path under /public, e.g. '/assets/images/portfolio/gia.jpg' */
+  src: string
+  /** Descriptive alt text for screen readers / SEO */
+  alt: string
+  /** Short caption shown in the lightbox */
+  caption: string
+}
+
 // ── Business Portfolio ────────────────────────────────────────
 // Each item gets its own page at /portfolio/[slug]
 // Place card images in /public/assets/images/portfolio/
-export const portfolioItems = [
+export const portfolioItems: {
+  slug: string
+  title: string
+  shortDesc: string
+  image: string
+  heroImage: string
+  color: string
+  category: string
+  overview: string
+  highlights: string[]
+  gallery: GalleryImage[]
+}[] = [
   {
     slug: 'diamonds',
     title: 'Diamonds',
@@ -69,13 +92,36 @@ export const portfolioItems = [
       'Fancy-Vivid Coloured Diamonds',
     ],
     gallery: [
-      '/assets/images/portfolio/gia.jpg',
-      '/assets/images/portfolio/brc.jpg',
-      '/assets/images/portfolio/PCut.jpg',
-      '/assets/images/portfolio/PortugueseCutPink.jpg',
-      '/assets/images/portfolio/bag.jpg',
-      '/assets/images/portfolio/lgcerti.jpg',
-
+      {
+        src: '/assets/images/portfolio/gia.jpg',
+        alt: 'GIA certificate for a natural diamond',
+        caption: 'GIA-certified natural diamond report',
+      },
+      {
+        src: '/assets/images/portfolio/brc.jpg',
+        alt: 'Close-up of a brilliant round cut diamond',
+        caption: 'Brilliant round cut diamond',
+      },
+      {
+        src: '/assets/images/portfolio/PCut.jpg',
+        alt: 'Portuguese cut diamond with multi-faceted brilliance',
+        caption: 'Portuguese cut diamond',
+      },
+      {
+        src: '/assets/images/portfolio/PortugueseCutPink.jpg',
+        alt: 'Fancy pink diamond in a Portuguese cut',
+        caption: 'Portuguese cut fancy pink diamond',
+      },
+      {
+        src: '/assets/images/portfolio/bag.jpg',
+        alt: 'Emerald Cut Lab-grown diamond',
+        caption: 'Emerald Cut Lab-grown diamond',
+      },
+      {
+        src: '/assets/images/portfolio/lgcerti.jpg',
+        alt: 'IGI certification for a lab-grown diamond',
+        caption: 'IGI lab-grown diamond certificate',
+      },
     ],
   },
   {
@@ -83,7 +129,6 @@ export const portfolioItems = [
     title: 'Gemstones',
     shortDesc: 'Handpicked, natural wonders from around the world.',
     image: '/assets/images/portfolio/ys.jpg',
-//     image: '/assets/images/portfolio/Emerald.jpg',
     heroImage: '/assets/images/portfolio/Emerald.jpg',
     color: '#1B6B4A', // emerald accent
     category: 'Collection',
@@ -96,12 +141,36 @@ export const portfolioItems = [
       'Provenance documentation - GRS/Gubelin/SSF',
     ],
     gallery: [
-      '/assets/images/portfolio/BSapp.jpg',
-      '/assets/images/portfolio/GRS.jpg',
-      '/assets/images/portfolio/YS3.jpg',
-      '/assets/images/portfolio/Emerald.jpg',
-      '/assets/images/portfolio/BSSL.jpg',
-      '/assets/images/portfolio/BRuby.jpg',
+      {
+        src: '/assets/images/portfolio/BSapp.jpg',
+        alt: 'Natural blue sapphire gemstone',
+        caption: 'Non Heated - Non Treated Blue sapphire',
+      },
+      {
+        src: '/assets/images/portfolio/GRS.jpg',
+        alt: 'GRS laboratory certification report',
+        caption: 'GRS gemstone certification',
+      },
+      {
+        src: '/assets/images/portfolio/YS3.jpg',
+        alt: 'Natural yellow sapphire gemstone',
+        caption: 'Natural Yellow sapphire',
+      },
+      {
+        src: '/assets/images/portfolio/Emerald.jpg',
+        alt: 'Natural emerald gemstone with rich green colour',
+        caption: 'GRS Certified - Zambian emerald',
+      },
+      {
+        src: '/assets/images/portfolio/BSSL.jpg',
+        alt: 'Sri Lankan blue sapphire gemstone',
+        caption: 'Blue sapphire - Sri Lanka origin',
+      },
+      {
+        src: '/assets/images/portfolio/BRuby.jpg',
+        alt: 'Natural ruby gemstone',
+        caption: 'Heated - Certified Burmese ruby',
+      },
     ],
   },
   {
@@ -121,10 +190,26 @@ export const portfolioItems = [
       'CAD preview confirmation',
     ],
     gallery: [
-      '/assets/images/portfolio/CustomJewellery.jpeg',
-      '/assets/images/portfolio/Custom1.jpg',
-      '/assets/images/portfolio/Custom2.jpg',
-      '/assets/images/portfolio/C1.jpg',
+      {
+        src: '/assets/images/portfolio/CustomJewellery.jpeg',
+        alt: 'Handcrafted custom jewellery piece',
+        caption: 'Natural Ruby-Emerald-South Sea Pearls Necklace set and bracelet',
+      },
+      {
+        src: '/assets/images/portfolio/Custom1.jpg',
+        alt: 'Custom jewellery design',
+        caption: 'Close setting Diamond Necklace',
+      },
+      {
+        src: '/assets/images/portfolio/Custom2.jpg',
+        alt: 'Finished custom jewellery piece',
+        caption: 'Malachite-Amethyst-Citrin-Pearls',
+      },
+      {
+        src: '/assets/images/portfolio/C1.jpg',
+        alt: 'Close-up detail of custom jewellery craftsmanship',
+        caption: 'Diamond Bangles',
+      },
     ],
   },
   {
@@ -144,11 +229,31 @@ export const portfolioItems = [
       'Custom procurement briefs',
     ],
     gallery: [
-      '/assets/images/portfolio/GS1.jpg',
-      '/assets/images/portfolio/GS5.jpg',
-      '/assets/images/portfolio/GS3.jpg',
-      '/assets/images/portfolio/GS6.jpg',
-      '/assets/images/portfolio/GS4.jpg',
+      {
+        src: '/assets/images/portfolio/GS1.jpg',
+        alt: 'Gemstone sourcing at the mine',
+        caption: 'Sourcing gemstones at origin - Sapphires',
+      },
+      {
+        src: '/assets/images/portfolio/GS5.jpg',
+        alt: 'Diamond Grading and Assortment',
+        caption: 'Diamond Grading and Assortment',
+      },
+      {
+        src: '/assets/images/portfolio/GS3.jpg',
+        alt: 'Sorting and grading gemstones',
+        caption: 'Blue Sapphire bulk procurement',
+      },
+      {
+        src: '/assets/images/portfolio/GS6.jpg',
+        alt: 'Mix Semi precious sourcing',
+        caption: 'Mix Semi precious sourcing',
+      },
+      {
+        src: '/assets/images/portfolio/GS4.jpg',
+        alt: 'Gemstone procurement process',
+        caption: 'Natural Ethiopian Opal sourcing',
+      },
     ],
   },
   {
@@ -165,13 +270,29 @@ export const portfolioItems = [
       'Precious Beads',
       'Semi-Precious Beads',
       'Synthetic Beads',
-      'Bracelets and Healing stones',
+      'Bracelets and Healing stones beads',
     ],
     gallery: [
-      '/assets/images/portfolio/nav.jpg',
-      '/assets/images/portfolio/ruby.jpg',
-      '/assets/images/portfolio/B1.jpg',
-      '/assets/images/portfolio/Culturedpearls.jpg',
+      {
+        src: '/assets/images/portfolio/nav.jpg',
+        alt: 'Navratna nine-gem beads',
+        caption: 'Navratna beads bracelet',
+      },
+      {
+        src: '/assets/images/portfolio/ruby.jpg',
+        alt: 'Natural ruby beads strand',
+        caption: 'Multiple Shades Ruby beads',
+      },
+      {
+        src: '/assets/images/portfolio/B1.jpg',
+        alt: 'Assorted semi-precious bead strands',
+        caption: 'CZ Multi color beads with custom faceted gemstone',
+      },
+      {
+        src: '/assets/images/portfolio/Culturedpearls.jpg',
+        alt: 'Strand of cultured pearls',
+        caption: 'Jp.Cultured pearls',
+      },
     ],
   },
   {
@@ -191,13 +312,36 @@ export const portfolioItems = [
       'Laser Marked with "GB Brilliance"',
     ],
     gallery: [
-//       '/assets/images/portfolio/GB Colors.jpg',
-      '/assets/images/portfolio/GB fancy Colors.jpg',
-      '/assets/images/portfolio/GB White.jpg',
-      '/assets/images/portfolio/CZ1.jpg',
-      '/assets/images/portfolio/CZ4.jpg',
-      '/assets/images/portfolio/CZ5.jpg',
-      '/assets/images/portfolio/CZ3.jpg',
+      {
+        src: '/assets/images/portfolio/GB fancy Colors.jpg',
+        alt: 'Precision-cut fancy coloured CZ stones',
+        caption: 'Fancy coloured laser engraved GB-cubic zirconia',
+      },
+      {
+        src: '/assets/images/portfolio/GB White.jpg',
+        alt: 'Precision-cut white CZ stones',
+        caption: 'White cubic zirconia',
+      },
+      {
+        src: '/assets/images/portfolio/CZ1.jpg',
+        alt: 'ICE cut cubic zirconia',
+        caption: 'Fancy vivid Yellow Cz Oval',
+      },
+      {
+        src: '/assets/images/portfolio/CZ4.jpg',
+        alt: 'Cushion cut cubic zirconia',
+        caption: 'Ruby #8 Cushion cut CZ',
+      },
+      {
+        src: '/assets/images/portfolio/CZ5.jpg',
+        alt: 'Heart shaped cubic zirconia',
+        caption: 'Heart cut CZ',
+      },
+      {
+        src: '/assets/images/portfolio/CZ3.jpg',
+        alt: 'Cubic zirconia laser marked with GB Brilliance',
+        caption: 'Cz- Columbian-Emerald Green Cushion Cut',
+      },
     ],
   },
 ]

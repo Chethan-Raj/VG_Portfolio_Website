@@ -2,7 +2,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, CheckCircle2 } from 'lucide-react'
 import { portfolioItems } from '@/lib/config'
-import GalleryLightbox from '@/components/GalleryLightbox'
+import Gallery from '@/components/Gallery'
+import PortfolioThumb from '@/components/PortfolioThumb'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
@@ -98,7 +99,7 @@ export default function PortfolioDetailPage({ params }: Props) {
             {/* Gallery with lightbox */}
             <div>
               <h3 className="font-display font-semibold text-2xl text-espresso mb-5">Gallery</h3>
-              <GalleryLightbox
+              <Gallery
                 images={item.gallery}
                 title={item.title}
                 accentColor={item.color}
@@ -146,10 +147,7 @@ export default function PortfolioDetailPage({ params }: Props) {
                     href={`/portfolio/${o.slug}`}
                     className="flex items-center gap-3 group"
                   >
-                    <div
-                      className="w-10 h-10 rounded-sm flex-shrink-0"
-                      style={{ background: `linear-gradient(135deg, ${o.color}60, ${o.color})` }}
-                    />
+                    <PortfolioThumb image={o.image} color={o.color} alt={o.title} />
                     <div>
                       <p className="font-body text-sm font-medium text-espresso group-hover:text-gold transition-colors">
                         {o.title}

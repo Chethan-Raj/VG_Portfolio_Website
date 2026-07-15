@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 // const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vasavigems.com'
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'vasavigems.netlify.app'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vasavigems.netlify.app'
 
 export default function robots(): MetadataRoute.Robots {
   return {
