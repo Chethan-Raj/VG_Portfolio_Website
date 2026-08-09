@@ -47,6 +47,7 @@ export default function PortfolioDetailPage({ params }: Props) {
           alt={item.title}
           fill
           priority
+          fetchPriority="high"
           className="object-cover"
           sizes="100vw"
         />

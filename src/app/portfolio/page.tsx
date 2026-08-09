@@ -48,8 +48,12 @@ export default function PortfolioPage() {
                   src={item.image}
                   alt={item.title}
                   fill
+                  // First row (visible on initial load without scrolling) gets
+                  // eager loading + high fetch priority; the rest stay lazy.
+                  priority={i < 3}
+                  fetchPriority={i < 3 ? 'high' : undefined}
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-espresso/0 group-hover:bg-espresso/25 transition-all duration-400" />
                 <div className="absolute top-3 right-3 bg-espresso/70 backdrop-blur-sm px-2.5 py-1 rounded-sm">

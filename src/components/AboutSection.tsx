@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Diamond } from 'lucide-react'
 import { aboutConfig } from '@/lib/config'
 import { useReveal } from '@/lib/hooks/useReveal'
@@ -85,11 +86,18 @@ export default function AboutSection() {
             <div className="relative rounded-sm overflow-hidden shadow-card-hover aspect-[4/5]">
               {/* Gradient fallback */}
               <div className="absolute inset-0 bg-gradient-to-br from-espresso-light to-espresso" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              {/* Was a raw <img> — it never went through next/image, so the
+                  browser shipped the original 1.9MB PNG as-is. Box already
+                  has a fixed aspect-[4/5] ratio, so `fill` is a direct,
+                  same-behavior swap: same sharp pipeline + avif/webp
+                  negotiation the rest of the site's images already get. */}
+              <Image
                 src={aboutConfig.image}
                 alt="Gemstone expert at work"
-                className="absolute inset-0 w-full h-full object-cover"
+                fill
+                loading="lazy"
+                sizes="(max-width: 1024px) 90vw, 45vw"
+                className="object-cover"
                 onError={(e) => { (e.target as HTMLImageElement).style.opacity = '0' }}
               />
               {/* Subtle gold vignette */}

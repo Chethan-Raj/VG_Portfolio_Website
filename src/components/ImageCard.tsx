@@ -5,6 +5,31 @@ import { ImageOff } from 'lucide-react'
 
 type Status = 'loading' | 'loaded' | 'error'
 
+// These <img> tags are the only image path in the app that don't already
+// go through next/image (the "fill" grid needs opacity/spinner control
+// tied to a raw <img>'s load/error events, and "natural" needs the
+// browser's own intrinsic-size scaling, which next/image can't do without
+// known width/height). Without this, the browser downloaded the original
+// upload straight from /public — often 3000-4600px, 2-8MB per photo.
+//
+// Fix: route through Next's own image-optimization endpoint (the same
+// sharp-based pipeline + avif/webp negotiation next/image uses under the
+// hood, already configured in next.config.js) with explicit widths, via
+// srcSet, instead of the raw file. onLoad/onError/complete/naturalWidth
+// all keep working — it's still a plain <img>, just a smaller `src`.
+const DPR_WIDTHS: Record<'fill' | 'natural', number[]> = {
+  fill: [640, 828, 1200], // grid thumbnails — never render wider than ~600px
+  natural: [750, 1080, 1920], // lightbox — can reach ~92vw on large screens
+}
+
+function optimizedSrc(src: string, width: number, quality = 75) {
+  return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=${quality}`
+}
+
+function buildSrcSet(src: string, layout: 'fill' | 'natural') {
+  return DPR_WIDTHS[layout].map(w => `${optimizedSrc(src, w)} ${w}w`).join(', ')
+}
+
 interface ImageCardProps {
   /** Image path — sourced from lib/config.ts */
   src: string
@@ -99,9 +124,12 @@ export default function ImageCard({
     // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={setRef}
-      src={src}
+      src={optimizedSrc(src, DPR_WIDTHS[layout][DPR_WIDTHS[layout].length - 1])}
+      srcSet={buildSrcSet(src, layout)}
+      sizes={layout === 'fill' ? '(max-width: 768px) 50vw, 420px' : '92vw'}
       alt={alt}
       loading={priority ? 'eager' : 'lazy'}
+      fetchPriority={priority ? 'high' : undefined}
       decoding="async"
       onLoad={e => {
         const el = e.currentTarget

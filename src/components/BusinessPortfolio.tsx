@@ -34,12 +34,18 @@ function PortfolioCard({
           />
           {/* Actual image — overlays gradient when it loads */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/* Below-the-fold grid (behind a full-viewport hero) — stays lazy,
+              no priority/fetchPriority, so it never competes with the hero
+              image for bandwidth. `sizes` matches the actual grid tracks
+              (2 / 3 / 4 cols) instead of a flat 33vw so mobile/tablet don't
+              download an oversized desktop image. */}
           <Image
             src={item.image}
             alt={item.title}
             fill
+            loading="lazy"
             className="object-cover transition-transform duration-700 group-hover:scale-108"
-            sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-espresso/0 group-hover:bg-espresso/30 transition-all duration-400" />
